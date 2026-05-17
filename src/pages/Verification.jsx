@@ -38,7 +38,7 @@ export default function Verification() {
   const stepTimerRef = useRef(null);
 
   useEffect(() => {
-    const cleanup = startRandomJumpScares(25000, 50000);
+    const cleanup = startRandomJumpScares(12000, 35000);
     return cleanup;
   }, [startRandomJumpScares]);
 

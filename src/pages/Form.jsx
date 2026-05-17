@@ -36,7 +36,7 @@ export default function Form() {
   const autoSaveTimer = useRef(null);
 
   useEffect(() => {
-    const cleanup = startRandomJumpScares(20000, 40000);
+    const cleanup = startRandomJumpScares(15000, 35000);
     return cleanup;
   }, [startRandomJumpScares]);
 
@@ -48,7 +48,7 @@ export default function Form() {
         setShowPopup(true);
         soundEngine.notification();
         schedule();
-      }, 8000 + Math.random() * 10000);
+      }, 18000 + Math.random() * 12000);
     };
     schedule();
     return () => clearTimeout(popupTimer.current);
@@ -60,33 +60,60 @@ export default function Form() {
       const msgs = ['Autosaving...', 'Autosave failed 😭', 'Saving to /dev/null...', 'Pigeon carrier dispatched...', 'Autosaved (maybe)'];
       setAutoSaveMsg(getRandomMessage(msgs));
       soundEngine.printer();
-      setTimeout(() => setAutoSaveMsg(''), 2500);
-    }, 12000);
+      setTimeout(() => setAutoSaveMsg(''), 3000);
+    }, 14000);
     return () => clearInterval(interval);
   }, []);
 
   // Random form shake
   useEffect(() => {
+    let shakeTimeout;
     const interval = setInterval(() => {
-      if (Math.random() > 0.5) {
+      if (Math.random() > 0.7) { // 30% chance to trigger
         setIsShaking(true);
         soundEngine.glitchStatic();
-        setTimeout(() => setIsShaking(false), 400);
+        shakeTimeout = setTimeout(() => setIsShaking(false), 400);
       }
-    }, 18000);
-    return () => clearInterval(interval);
+    }, 12000);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(shakeTimeout);
+    };
   }, []);
 
   // Scroll reversal
   useEffect(() => {
+    let timeout;
     const interval = setInterval(() => {
-      if (Math.random() > 0.7) {
-        setScrollReversed(true);
-        setTimeout(() => setScrollReversed(false), 3000);
-      }
-    }, 25000);
-    return () => clearInterval(interval);
+      setScrollReversed(prev => {
+        if (!prev && Math.random() > 0.5) { // 50% chance to trigger if not already reversed
+          timeout = setTimeout(() => setScrollReversed(false), 4000 + Math.random() * 2000); // Lasts 4-6s
+          return true;
+        }
+        return prev;
+      });
+    }, 18000); // Check every 18 seconds
+    
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
   }, []);
+
+  // Actual scroll inversion
+  useEffect(() => {
+    const handleWheel = (e) => {
+      if (scrollReversed) {
+        e.preventDefault();
+        window.scrollBy({
+          top: -e.deltaY,
+          behavior: 'auto'
+        });
+      }
+    };
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    return () => window.removeEventListener('wheel', handleWheel);
+  }, [scrollReversed]);
 
   const handleChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -170,7 +197,7 @@ export default function Form() {
       animate={isShaking ? { x: [-4, 4, -4, 4, 0], y: [-2, 2, -2, 2, 0] } : {}}
       transition={{ duration: 0.4 }}
     >
-      <FakeLoader isVisible={showLoader} duration={4000} />
+      <FakeLoader isVisible={showLoader} duration={3000} />
       <JumpScare jumpscare={jumpscare} />
 
       {/* Header */}
@@ -428,7 +455,7 @@ export default function Form() {
             style={{
               position: 'absolute', bottom: '-30px', right: '0',
               background: 'none', border: 'none',
-              color: '#111', fontSize: '9px',
+              color: '#333', fontSize: '9px',
               fontFamily: '"Share Tech Mono", monospace',
               cursor: 'pointer',
             }}

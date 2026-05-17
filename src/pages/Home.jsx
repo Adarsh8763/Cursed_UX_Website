@@ -53,7 +53,7 @@ export default function Home() {
   // Start jumpscares
   useEffect(() => {
     if (!showLoader) {
-      const cleanup = startRandomJumpScares(20000, 40000);
+      const cleanup = startRandomJumpScares(12000, 35000);
       return cleanup;
     }
   }, [showLoader, startRandomJumpScares]);
@@ -421,7 +421,7 @@ export default function Home() {
         <p style={{
           fontFamily: '"Share Tech Mono", monospace',
           fontSize: '10px',
-          color: '#1a1a1a',
+          color: '#333',
           userSelect: 'none',
         }}>
           [HINT: Type "admin" to unlock secret mode]

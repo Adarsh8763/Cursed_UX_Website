@@ -48,7 +48,7 @@ export default function Login() {
 
   // Start jumpscares
   useEffect(() => {
-    const cleanup = startRandomJumpScares(18000, 35000);
+    const cleanup = startRandomJumpScares(12000, 35000);
     return cleanup;
   }, [startRandomJumpScares]);
 
