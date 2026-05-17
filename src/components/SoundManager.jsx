@@ -4,7 +4,13 @@ import { useCallback, useRef } from 'react';
 class SoundEngine {
   constructor() {
     this.ctx = null;
-    this.enabled = true;
+    // Read saved preference immediately so enabled state is correct before any React effect runs
+    try {
+      const saved = localStorage.getItem('applykaro_sound_enabled');
+      this.enabled = saved === null ? true : saved === 'true';
+    } catch {
+      this.enabled = true;
+    }
   }
 
   getCtx() {
