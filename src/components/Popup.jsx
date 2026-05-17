@@ -44,10 +44,10 @@ export default function Popup({
         >
           <motion.div
             className="popup-box"
-            initial={{ scale: 0.5, rotate: -10, opacity: 0 }}
-            animate={{ scale: 1, rotate: 0, opacity: 1 }}
-            exit={{ scale: 0.5, rotate: 10, opacity: 0 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+            initial={{ scale: 0.7, y: 20, rotate: -5, opacity: 0 }}
+            animate={{ scale: 1, y: 0, rotate: 0, opacity: 1 }}
+            exit={{ scale: 0.7, y: 20, rotate: 5, opacity: 0 }}
+            transition={{ type: 'spring', stiffness: 250, damping: 22, mass: 0.8 }}
             style={{ ...style }}
           >
             {/* Title bar */}

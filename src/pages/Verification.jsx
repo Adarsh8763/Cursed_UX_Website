@@ -145,7 +145,7 @@ export default function Verification() {
         <motion.div
           style={{ fontSize: '4rem', marginTop: '30px' }}
           animate={{ rotate: [0, 10, -10, 0] }}
-          transition={{ duration: 0.5, repeat: Infinity }}
+          transition={{ duration: 0.5, repeat: Infinity, ease: 'easeInOut' }}
         >
           😢
         </motion.div>
@@ -175,7 +175,7 @@ export default function Verification() {
 
         <motion.div
           animate={{ scale: [1, 1.05, 1], rotate: [-1, 1, -1] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           style={{ fontSize: '5rem' }}
         >
           💀
@@ -197,7 +197,7 @@ export default function Verification() {
               '0 0 30px #ff0040, 4px 4px 0 #000',
             ],
           }}
-          transition={{ duration: 1, repeat: Infinity }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         >
           APPLICATION<br />REJECTED<br />SUCCESSFULLY.
         </motion.h1>
@@ -285,6 +285,7 @@ export default function Verification() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
               style={{
                 position: 'fixed', inset: 0,
                 background: 'rgba(0,0,0,0.9)',
@@ -363,7 +364,7 @@ export default function Verification() {
       {/* Spinning emoji */}
       <motion.div
         animate={{ rotate: 360, scale: [1, 1.1, 1] }}
-        transition={{ rotate: { duration: 3, repeat: Infinity, ease: 'linear' }, scale: { duration: 1.5, repeat: Infinity } }}
+        transition={{ rotate: { duration: 3, repeat: Infinity, ease: 'linear' }, scale: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' } }}
         style={{ fontSize: '4rem', marginTop: '40px', filter: 'drop-shadow(0 0 20px rgba(0,255,65,0.6))' }}
       >
         🏛️
@@ -411,7 +412,7 @@ export default function Verification() {
           <motion.span
             style={{ fontFamily: '"Share Tech Mono", monospace', fontSize: '11px', color: '#ffff00' }}
             animate={{ opacity: [1, 0.3, 1] }}
-            transition={{ duration: 0.5, repeat: Infinity }}
+            transition={{ duration: 0.8, repeat: Infinity, ease: 'easeInOut' }}
           >
             {progress}%
           </motion.span>

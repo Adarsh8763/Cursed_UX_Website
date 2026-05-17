@@ -112,7 +112,7 @@ export default function FakeLoader({ isVisible, onComplete, duration = 4000 }) {
                   height: '100%',
                   background: 'linear-gradient(90deg, #00ff41, #ffff00, #ff0040)',
                   width: `${progress}%`,
-                  transition: 'width 0.3s ease',
+                  transition: 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                 }}
               />
               <div style={{

@@ -259,7 +259,7 @@ export default function Login() {
           animate={{
             borderColor: ['#00ff41', '#ff0040', '#ffff00', '#00ff41'],
           }}
-          transition={{ duration: 3, repeat: Infinity }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
         >
           {/* Scanline */}
           <div className="scanline-overlay" />
@@ -282,7 +282,7 @@ export default function Login() {
               className="cursed-input"
               placeholder="Enter your government-issued identity..."
               animate={inputShake ? { x: [-3, 3, -3, 3, 0] } : {}}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
               style={{ display: 'block' }}
             />
           </div>
@@ -318,7 +318,7 @@ export default function Login() {
                 className="cursed-input"
                 placeholder="🦕dharmaRaptor123..."
                 animate={passwordShaking ? { x: [-4, 4, -4, 4, 0], rotate: [-1, 1, -1, 1, 0] } : {}}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
                 style={{ display: 'block', paddingRight: '40px' }}
               />
               <button
@@ -345,7 +345,7 @@ export default function Login() {
                       borderRadius: '3px',
                     }}
                     animate={{ width: `${passwordStrength.strength}%` }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.4, ease: 'easeInOut' }}
                   />
                 </div>
                 <div style={{
@@ -366,6 +366,7 @@ export default function Login() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
                   style={{
                     background: '#ff0040',
                     color: 'white',

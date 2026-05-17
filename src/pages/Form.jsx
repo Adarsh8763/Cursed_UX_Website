@@ -195,7 +195,7 @@ export default function Form() {
         overflowX: scrollReversed ? 'scroll' : 'hidden',
       }}
       animate={isShaking ? { x: [-4, 4, -4, 4, 0], y: [-2, 2, -2, 2, 0] } : {}}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.4, ease: 'easeOut' }}
     >
       <FakeLoader isVisible={showLoader} duration={3000} />
       <JumpScare jumpscare={jumpscare} />
@@ -241,7 +241,7 @@ export default function Form() {
           <motion.h1
             style={{ fontFamily: '"VT323", monospace', fontSize: '3rem', color: '#00ff41', textShadow: '0 0 15px #00ff41' }}
             animate={{ opacity: [1, 0.7, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           >
             APPLICATION FORM 27B/6
           </motion.h1>
@@ -483,7 +483,7 @@ export default function Form() {
               gap: '20px', zIndex: 99999,
             }}
           >
-            <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 2, repeat: Infinity }} style={{ fontSize: '5rem' }}>
+            <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }} style={{ fontSize: '5rem' }}>
               😭
             </motion.div>
             <h2 style={{ fontFamily: '"Press Start 2P", monospace', fontSize: '12px', color: '#6699ff', textAlign: 'center', lineHeight: 2 }}>

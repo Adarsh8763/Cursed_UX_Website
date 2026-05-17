@@ -19,15 +19,22 @@ export default function MovingButton({ children, onClick, className = '', style 
       return;
     }
 
-    // Calculate random direction to move
+    // Calculate random direction to move, constrained by viewport
+    const maxH = typeof window !== 'undefined' ? Math.min(200, window.innerWidth / 3) : 200;
+    const maxV = typeof window !== 'undefined' ? Math.min(150, window.innerHeight / 3) : 150;
+    
     const directions = [
-      { x: 200, y: 0 }, { x: -200, y: 0 },
-      { x: 0, y: 150 }, { x: 0, y: -150 },
-      { x: 150, y: 100 }, { x: -150, y: -100 },
-      { x: 180, y: -80 }, { x: -180, y: 80 },
+      { x: maxH, y: 0 }, { x: -maxH, y: 0 },
+      { x: 0, y: maxV }, { x: 0, y: -maxV },
+      { x: maxH * 0.8, y: maxV * 0.8 }, { x: -maxH * 0.8, y: -maxV * 0.8 },
+      { x: maxH * 0.9, y: -maxV * 0.6 }, { x: -maxH * 0.9, y: maxV * 0.6 },
     ];
     const dir = directions[Math.floor(Math.random() * directions.length)];
-    setPosition({ x: dir.x, y: dir.y });
+    // Ensure we don't move too far consecutively in the same direction
+    const newX = position.x === 0 ? dir.x : dir.x > 0 ? -Math.abs(dir.x) : Math.abs(dir.x);
+    const newY = position.y === 0 ? dir.y : dir.y > 0 ? -Math.abs(dir.y) : Math.abs(dir.y);
+    
+    setPosition({ x: newX, y: newY });
     setEscapeCount(prev => prev + 1);
     setIsShaking(true);
     soundEngine.xpError();

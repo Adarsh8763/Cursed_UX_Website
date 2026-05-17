@@ -18,7 +18,7 @@ export default function JumpScare({ jumpscare }) {
           { scale: 3, rotate: -5, transition: { duration: 0.1 } },
           { scale: 2.9, rotate: 0, transition: { duration: 0.1 } },
         ]}
-        exit={{ scale: 0, opacity: 0, rotate: 30, filter: 'blur(20px)', transition: { duration: 0.3 } }}
+        exit={{ scale: 0, opacity: 0, rotate: 30, filter: 'blur(20px)', transition: { duration: 0.5, ease: 'easeInOut' } }}
       >
         {/* Character */}
         <motion.div

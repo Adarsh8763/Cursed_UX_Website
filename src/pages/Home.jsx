@@ -175,8 +175,8 @@ export default function Home() {
 
   return (
     <motion.div
-      animate={{ filter: isInverted ? 'invert(1)' : 'none' }}
-      transition={{ duration: 0.1 }}
+      animate={{ filter: isInverted ? 'invert(1)' : 'invert(0)' }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
       style={{ minHeight: '100vh', background: '#0a0a0a', position: 'relative', overflow: 'hidden' }}
     >
       <FakeLoader
@@ -252,7 +252,7 @@ export default function Home() {
             backgroundColor: ['#ff0000', '#ff6600', '#ff0000'],
             scale: [1, 1.02, 1],
           }}
-          transition={{ duration: 0.8, repeat: Infinity }}
+          transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
           style={{
             padding: '20px 40px',
             border: '4px solid #ffff00',
@@ -294,7 +294,7 @@ export default function Home() {
                 '0 0 20px #00ff41, 3px 3px 0 #ff0040',
               ],
             }}
-            transition={{ duration: 2, repeat: Infinity }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
           >
             ApplyKaro.gov
           </motion.h2>
@@ -341,7 +341,7 @@ export default function Home() {
                 lineHeight: 1.6,
               }}
               animate={{ borderColor: [alert.color, '#fff', alert.color] }}
-              transition={{ duration: 2, repeat: Infinity, delay: i * 0.5 }}
+              transition={{ duration: 3, repeat: Infinity, delay: i * 0.5, ease: 'easeInOut' }}
             >
               <span style={{ fontSize: '1.5rem' }}>{alert.icon}</span>
               <p style={{ marginTop: '8px' }}>{alert.text}</p>
@@ -379,7 +379,7 @@ export default function Home() {
               ],
               scale: [1, 1.02, 1],
             }}
-            transition={{ duration: 1.5, repeat: Infinity }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             whileHover={{ scale: 1.05, rotate: 1 }}
             whileTap={{ scale: 0.97 }}
           >
@@ -526,7 +526,7 @@ export default function Home() {
           className="floating-ad"
           style={{ ...ad.pos }}
           animate={{ y: [0, -10, 0], rotate: [-1, 1, -1] }}
-          transition={{ duration: 2 + i * 0.5, repeat: Infinity }}
+          transition={{ duration: 3 + i * 0.5, repeat: Infinity, ease: 'easeInOut' }}
           onClick={() => { soundEngine.xpError(); }}
         >
           {ad.text}

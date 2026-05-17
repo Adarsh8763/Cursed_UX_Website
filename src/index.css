@@ -248,6 +248,8 @@ body::after {
   padding: 20px;
   max-width: 400px;
   width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
   position: relative;
   font-family: 'VT323', monospace;
   box-shadow: 0 0 30px rgba(0, 255, 65, 0.5);
@@ -276,19 +278,20 @@ body::after {
   background: var(--neon-green);
   color: #000;
   border: none;
-  padding: 12px 24px;
+  padding: clamp(10px, 2vw, 12px) clamp(16px, 3vw, 24px);
   font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
+  font-size: clamp(8px, 1.5vw, 10px);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
 .cursed-btn:hover {
   background: var(--neon-yellow);
-  animation: shake 0.2s ease-in-out;
+  animation: shake 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
   box-shadow: 0 0 20px rgba(255, 255, 0, 0.6);
+  transform: scale(1.02);
 }
 
 .cursed-btn-danger {
@@ -331,7 +334,7 @@ body::after {
 .fake-progress-fill {
   height: 100%;
   background: linear-gradient(90deg, var(--neon-green), var(--neon-yellow), var(--neon-red));
-  transition: width 0.5s ease;
+  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   position: relative;
 }
 
@@ -386,10 +389,10 @@ body::after {
   font-family: 'Comic Sans MS', cursive;
   font-size: 11px;
   color: white;
-  animation: floatBounce 2s ease-in-out infinite;
+  animation: floatBounce 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   cursor: pointer;
   z-index: 8000;
-  max-width: 180px;
+  max-width: min(180px, 40vw);
   text-align: center;
 }
 
@@ -453,8 +456,49 @@ body::after {
   pointer-events: none;
 }
 
-/* MEDIA QUERIES */
+/* MEDIA QUERIES & RESPONSIVENESS */
+@media (max-width: 1024px) {
+  .floating-ad {
+    max-width: 150px;
+    font-size: 10px;
+  }
+}
+
 @media (max-width: 768px) {
-  .glitch-text { font-size: 1.4rem; }
-  .cursed-btn { font-size: 8px; padding: 10px 16px; }
+  .glitch-text { font-size: clamp(1.2rem, 5vw, 2rem); }
+  .cursed-btn { font-size: clamp(8px, 2.5vw, 10px); padding: 12px 16px; }
+  .floating-ad { 
+    max-width: 120px; 
+    font-size: 9px; 
+    padding: 6px 8px;
+  }
+  .gov-header { font-size: clamp(8px, 2vw, 10px); letter-spacing: 1px; padding: 6px; line-height: 1.4; }
+  
+  .popup-box {
+    padding: 16px;
+    width: 95%;
+  }
+
+  .cursed-input {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+    padding: 12px;
+  }
+
+  .ticker-text {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-ad { 
+    max-width: 100px; 
+    font-size: 8px; 
+    /* Prevent covering center UI */
+    top: auto !important;
+    bottom: 5% !important;
+  }
+  
+  /* Ensure ad 1 goes bottom-left, ad 2 goes bottom-right */
+  .floating-ad:nth-child(even) { right: 2% !important; left: auto !important; }
+  .floating-ad:nth-child(odd) { left: 2% !important; right: auto !important; }
 }
