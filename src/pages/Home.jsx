@@ -387,7 +387,7 @@ export default function Home() {
           </motion.button>
           <p style={{
             fontFamily: '"Comic Sans MS", cursive',
-            color: '#666',
+            color: '#888',
             fontSize: '10px',
             marginTop: '8px',
           }}>
@@ -406,7 +406,7 @@ export default function Home() {
           fontSize: '10px',
           color: '#444',
         }}>
-          <p style={{ color: '#666', marginBottom: '8px' }}>Government Update v98.0 downloading...</p>
+          <p style={{ color: '#777', marginBottom: '8px' }}>Government Update v98.0 downloading...</p>
           <div style={{ background: '#0a0a0a', border: '1px solid #333', height: '12px', overflow: 'hidden' }}>
             <motion.div
               style={{ height: '100%', background: '#003300' }}
@@ -414,7 +414,7 @@ export default function Home() {
               transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
             />
           </div>
-          <p style={{ marginTop: '4px', color: '#333' }}>ETA: 3 government years</p>
+          <p style={{ marginTop: '4px', color: '#555' }}>ETA: 3 government years</p>
         </div>
 
         {/* Easter egg hint */}

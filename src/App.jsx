@@ -4,6 +4,9 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Form from './pages/Form';
 import Verification from './pages/Verification';
+import MinistryOverride from './components/MinistryOverride';
+import DiagnosticsPanel from './components/DiagnosticsPanel';
+import SoundToggle from './components/SoundToggle';
 import './index.css';
 
 function App() {
@@ -21,6 +24,12 @@ function App() {
           },
         }}
       />
+
+      {/* Global persistent overlays */}
+      <MinistryOverride />
+      <DiagnosticsPanel />
+      <SoundToggle />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -32,3 +41,4 @@ function App() {
 }
 
 export default App;
+
