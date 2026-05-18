@@ -7,6 +7,7 @@ import Verification from './pages/Verification';
 import MinistryOverride from './components/MinistryOverride';
 import DiagnosticsPanel from './components/DiagnosticsPanel';
 import SoundToggle from './components/SoundToggle';
+import CursorChaos from './components/CursorChaos';
 import './index.css';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
       <MinistryOverride />
       <DiagnosticsPanel />
       <SoundToggle />
+      <CursorChaos />
 
       <Routes>
         <Route path="/" element={<Home />} />

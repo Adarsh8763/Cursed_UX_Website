@@ -149,7 +149,7 @@ export default function DiagnosticsPanel() {
                     transition={{ duration: 0.35, ease: 'easeInOut' }}
                     style={{ position: 'absolute', width: '100%' }}
                   >
-                    <div style={{ fontSize: '8px', color: '#1a3a1a', marginBottom: '1px' }}>
+                    <div style={{ fontSize: '8px', color: 'whitesmoke', marginBottom: '1px' }}>
                       {current.label}:
                     </div>
                     <div style={{ fontSize: '10px', color: current.color, letterSpacing: '0.5px' }}>
